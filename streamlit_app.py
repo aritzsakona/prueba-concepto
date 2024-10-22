@@ -18,6 +18,10 @@ uploaded_csv_entradas_materiales = st.file_uploader("Sube tu archivo CSV de mate
 año_actual = st.text_input("Año de producción:")
 #año_actual = "2022"
 
+@st.cache_data
+def convert_df(df):
+    return df.to_csv(index=False).encode('utf-8')
+
 # Esperar hasta que todas las variables tengan valores
 while uploaded_csv_produccion is None or uploaded_csv_entradas_materiales is None or año_actual is None:
     time.sleep(2)
@@ -51,10 +55,6 @@ if uploaded_csv_produccion is not None or uploaded_csv_entradas_materiales is no
 
     # Mostrar el resumen de la producción total por artículo
     st.write("Resumen de Producción por MP:", resumen_produccion)
-    
-    with st.expander("Abrir para ver mas resumenes:"):
-        produccion_por_orden = produccion_df.groupby(['MP'])[año_actual].sum().reset_index()
-        st.write("Comparar Cantidades por Orden de Fabricación:", produccion_por_orden)
     
     ################################################################
     ############    Análisis de Entradas de Material    ############
@@ -111,13 +111,6 @@ if uploaded_csv_produccion is not None or uploaded_csv_entradas_materiales is no
     # Mostrar el consolidado
     st.write(consolidado_g)
     
-    @st.cache_data
-    def convert_df(df):
-        return df.to_csv(index=False).encode('utf-8')
-    
     with st.expander("Exportar csv:"):
-        st.download_button("Descargar CSV entero [sin agrupaciones]", convert_df(consolidado),
-        "[CRUDO] coste_por_MP_y_produccion.csv", "text/csv", key='download-csv')
-        
-        st.download_button("Descargar CSV procesado [con agrupaciones]", convert_df(consolidado),
-        "[RESULTADO] coste_por_MP_y_produccion.csv", "text/csv", key='download-csv')
+        st.download_button("Descargar CSV entero [sin agrupaciones]", convert_df(consolidado), "[CRUDO] coste_por_MP_y_produccion.csv", "text/csv", key='download-csv')
+        st.download_button("Descargar CSV procesado [con agrupaciones]", convert_df(consolidado), "[RESULTADO] coste_por_MP_y_produccion.csv", "text/csv", key='download-csv')
