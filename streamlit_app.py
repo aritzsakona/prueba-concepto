@@ -112,5 +112,5 @@ if uploaded_csv_produccion is not None or uploaded_csv_entradas_materiales is no
     st.write(consolidado_g)
     
     with st.expander("Exportar csv:"):
-        st.download_button("Descargar CSV entero [sin agrupaciones]", convert_df(consolidado), "[CRUDO] coste_por_MP_y_produccion.csv", "text/csv", key='download-csv')
-        st.download_button("Descargar CSV procesado [con agrupaciones]", convert_df(consolidado), "[RESULTADO] coste_por_MP_y_produccion.csv", "text/csv", key='download-csv')
+        st.download_button("Descargar CSV entero [sin agrupaciones]", convert_df(consolidado), "[CRUDO] coste_por_MP_y_produccion.csv", "text/csv", key='download-csv-1')
+        st.download_button("Descargar CSV procesado [con agrupaciones]", convert_df(consolidado_g), "[RESULTADO] coste_por_MP_y_produccion.csv", "text/csv", key='download-csv-2')
