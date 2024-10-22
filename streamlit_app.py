@@ -12,7 +12,8 @@ uploaded_csv_entradas_materiales = st.file_uploader("Sube tu archivo CSV de mate
 año_actual = st.text_input("Año de producción:")
 #año_actual = "2022"
 
-while (uploaded_csv_produccion is null) or (uploaded_csv_entradas_materiales is null) or (año_actual is null)
+while (uploaded_csv_produccion is null) or (uploaded_csv_entradas_materiales is null) or (año_actual is null):
+    esperar = True
 
 # Procesar el archivo subido
 if uploaded_file is not None:
