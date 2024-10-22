@@ -40,7 +40,7 @@ if uploaded_csv_produccion is not None or uploaded_csv_entradas_materiales is no
     produccion_df.columns = produccion_df.columns.str.strip()
 
     # Borrar todas las columnas que no sean 'MP', 'Articulo' y el año actual
-    columnas_utiles = ['MP', 'Articulo', [año_actual]]
+    columnas_utiles = ['MP', 'Articulo', año_actual]
     produccion_df = produccion_df[columnas_utiles]
 
     # Rellenar los huecos null con 0 en la columna correspondiente al año actual
