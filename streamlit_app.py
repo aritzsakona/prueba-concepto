@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import time
 
 # Título de la aplicación
 st.title("Análisis de Producción - Aplicación Interactiva")
@@ -7,6 +8,7 @@ st.title("Análisis de Producción - Aplicación Interactiva")
 uploaded_csv_produccion = None  # O cualquier valor inicial que uses
 uploaded_csv_entradas_materiales = None
 año_actual = None
+counter = 0
 
 # Subir el archivo CSV
 uploaded_csv_produccion = st.file_uploader("Sube tu archivo CSV de produccion", type="csv")
@@ -18,8 +20,10 @@ año_actual = st.text_input("Año de producción:")
 
 # Esperar hasta que todas las variables tengan valores
 while uploaded_csv_produccion is None or uploaded_csv_entradas_materiales is None or año_actual is None:
-    # Aquí podrías incluir una pausa para evitar un bucle infinito rápido
-    st.write("Esperando a que se suban los archivos y se defina el año actual...")
+    time.sleep(2)
+    if counter == 0:
+        st.write("Esperando a que se suban los archivos y se defina el año actual...")
+        counter += 1
 
 # Procesar el archivo subido
 if uploaded_file is not None:
