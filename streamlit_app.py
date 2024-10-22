@@ -26,7 +26,7 @@ while uploaded_csv_produccion is None or uploaded_csv_entradas_materiales is Non
         counter += 1
 
 # Procesar el archivo subido
-if uploaded_file is not None:
+if uploaded_csv_produccion is not None or uploaded_csv_entradas_materiales is not None or año_actual is not None:
     ####################################################
     ############    Análisis de Producción  ############
     ####################################################
