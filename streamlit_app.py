@@ -31,7 +31,7 @@ if uploaded_csv_produccion is not None or uploaded_csv_entradas_materiales is no
     ############    Análisis de Producción  ############
     ####################################################
     # Cargar los datos en un DataFrame
-    produccion_df = pd.read_csv(uploaded_file, delimiter=";")
+    produccion_df = pd.read_csv(uploaded_csv_produccion, delimiter=";")
 
     # Limpiar datos (quitar filas con valores nulos en 'Articulo')
     produccion_df = produccion_df.dropna(subset=['Articulo'])
